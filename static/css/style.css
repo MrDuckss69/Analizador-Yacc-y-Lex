@@ -1,0 +1,109 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+    font-family: 'Comic Sans MS', Arial, verdana;
+    background-image: url('https://cdn.donmai.us/original/fb/29/__amatsuka_uto_voice_ore_drawn_by_deyui__fb293805edc8322f4a4b1add464ec2fc.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    color: #ffffff;
+}
+
+.container {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 1px solid #00796b;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.5);
+    border-radius: 8px;
+    width: 80%;
+    max-width: 800px;
+    max-height: auto;
+}
+
+textarea {
+    width: 100%;
+    margin-bottom: 10px;
+    border: 1px solid #00796b;
+    padding: 10px;
+    box-sizing: border-box;
+    background-color: rgba(255, 255, 255, 0.155);
+    resize: both;
+    border-radius: 4px;
+}
+
+input[type="submit"], input[type="button"] {
+    display: inline-block;
+    margin: 0 10px;
+    padding: 10px 20px;
+    background-color: #4b5aa4;
+    color: #ffffff;
+    border: 1px solid #00796b;
+    border-radius: 4px;
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(0,0,0,0.3);
+}
+
+input[type="submit"]:hover, input[type="button"]:hover {
+    background-color: #5745a0;
+}
+
+h1, h2 {
+    color: #ffffff;
+}
+
+.tables-container {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.tokens-textarea, .line-info-table {
+    width: 100%;
+    border: 1px solid #00796b;
+    border-radius: 4px;
+    overflow-y: auto;
+    background-color: rgba(0, 0, 0, 0.6);
+    min-height: 200px; /* Mantener el contenedor visible */
+}
+
+.tokens-textarea {
+    background-color: rgba(255, 255, 255, 0.155);
+    color: #000000;
+}
+
+.line-info-table {
+    background-color: rgba(255, 255, 255, 0.155);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+}
+
+th {
+    background-color: #21288950;
+}
+
+tbody tr:nth-child(even) {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+tbody tr:nth-child(odd) {
+    background-color: rgba(0, 0, 0, 0.2);
+}
+
+tbody td[colspan] {
+    text-align: center;
+    font-style: italic;
+    color: #ddd;
+}

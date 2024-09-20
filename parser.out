@@ -1,0 +1,50 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> statement
+Rule 1     statement -> RESERVED
+Rule 2     statement -> FREE
+
+Terminals, with rules where they appear
+
+FREE                 : 2
+RESERVED             : 1
+error                : 
+
+Nonterminals, with rules where they appear
+
+statement            : 0
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . statement
+    (1) statement -> . RESERVED
+    (2) statement -> . FREE
+
+    RESERVED        shift and go to state 2
+    FREE            shift and go to state 3
+
+    statement                      shift and go to state 1
+
+state 1
+
+    (0) S' -> statement .
+
+
+
+state 2
+
+    (1) statement -> RESERVED .
+
+    $end            reduce using rule 1 (statement -> RESERVED .)
+
+
+state 3
+
+    (2) statement -> FREE .
+
+    $end            reduce using rule 2 (statement -> FREE .)
+

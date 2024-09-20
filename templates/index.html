@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mi primer analizador web</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script>
+        function clearTextarea() {
+            document.querySelector('textarea[name="text"]').value = ''; // Limpia el textarea
+            const tokenTableBody = document.querySelector('#token-table tbody');
+            const syntaxTableBody = document.querySelector('#syntax-table tbody');
+            if (tokenTableBody) tokenTableBody.innerHTML = ''; // Limpia la tabla de tokens
+            if (syntaxTableBody) syntaxTableBody.innerHTML = ''; // Limpia la tabla de análisis sintáctico
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Mi primer analizador léxico y sintáctico</h1>
+        <form method="post">
+            <textarea name="text" rows="10" cols="50">{{ text if text else '' }}</textarea>
+            <input type="submit" value="Analizar">
+            <input type="button" value="Borrar" onclick="clearTextarea()">
+        </form>
+        <br><br>
+        <h2>Tokens y Tipos</h2>
+        <div class="tables-container">
+            <!-- Primer Contenedor: Analizador Léxico -->
+            <div class="tokens-textarea">
+                <h3>Analizador Léxico</h3>
+                <table id="token-table">
+                    <thead>
+                        <tr>
+                            <th>Línea</th>
+                            <th>Tipo</th>
+                            <th>Valor</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if tokens %}
+                        {% for line, tipo, valor in line_info %}
+                        <tr>
+                            <td>{{ line }}</td>
+                            <td>{{ tipo }}</td>
+                            <td>{{ valor }}</td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="3">No hay tokens que mostrar</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+            <!-- Segundo Contenedor: Analizador Sintáctico -->
+            <div class="line-info-table">
+                <h3>Analizador Sintáctico</h3>
+                <table id="syntax-table">
+                    <thead>
+                        <tr>
+                            <th>Línea</th>
+                            <th>Tipo de estructura</th>
+                            <th>Estructura Correcta</th>
+                            <th>Estructura Incorrecta</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% if sintactico_info %}
+                        {% for line, tipo, correcto, incorrecto in sintactico_info %}
+                        <tr>
+                            <td>{{ line }}</td>
+                            <td>{{ tipo }}</td>
+                            <td>{{ correcto }}</td>
+                            <td>{{ incorrecto }}</td>
+                        </tr>
+                        {% endfor %}
+                        {% else %}
+                        <tr>
+                            <td colspan="4">No hay estructuras sintácticas que mostrar</td>
+                        </tr>
+                        {% endif %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
